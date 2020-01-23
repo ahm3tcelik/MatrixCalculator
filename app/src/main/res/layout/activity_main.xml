@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <ScrollView
+        android:id="@+id/scrollA"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:background="@color/mLayoutColor"
+        android:fadeScrollbars="false"
+        android:padding="5dp"
+        android:scrollbarThumbVertical="@android:color/holo_orange_dark">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/mLayoutColor"
+            android:padding="5dp">
+
+            <TableRow android:gravity="center">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="A Matrisi"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="28sp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/matrisAContainer"
+                android:background="@color/mLayoutColor"
+                android:gravity="center">
+                <!-- Matris Content -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/matrisALayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/createMatrisA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:onClick="createMatrisA"
+                        android:text="Oluştur"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/matrisAj"
+                        app:layout_constraintStart_toEndOf="@+id/matrisAi"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <NumberPicker
+                        android:id="@+id/matrisAi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:background="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/createMatrisA"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <NumberPicker
+                        android:id="@+id/matrisAj"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_gravity="left"
+                        android:background="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/createMatrisA"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/rowA1"
+                android:background="@color/mLayoutColor"
+                android:gravity="center"
+                android:visibility="invisible">
+
+                <Button
+                    android:id="@+id/matrisADet"
+                    android:onClick="matrisADet"
+                    android:text="Determinant Hesapla" />
+
+                <Button
+                    android:id="@+id/matrisAInvo"
+                    android:layout_weight="1"
+                    android:onClick="matrisAInvo"
+                    android:text="İnvolütif Hesap" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/rowA2"
+                android:background="@color/mLayoutColor"
+                android:gravity="center"
+                android:visibility="invisible">
+
+                <Button
+                    android:id="@+id/matrisATers"
+                    android:layout_weight="1"
+                    android:onClick="matrisATers"
+                    android:text="Tersini Hesapla" />
+
+                <Button
+                    android:id="@+id/matrisACarp"
+                    android:layout_weight="1"
+                    android:onClick="matrisACarp"
+                    android:text="Şununla Çarp" />
+
+                <NumberPicker
+                    android:id="@+id/scanCarpan"
+                    android:layout_height="60dp"
+                    android:background="@color/white" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        android:background="@color/colorPrimary">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="[A] + [B]"
+            android:onClick="aArtiB"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="aEksiB"
+            android:text="[A] - [B]"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintStart_toEndOf="@+id/button3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="aCarpiB"
+            android:text="[A] x [B]"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scrollB"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:background="@color/mLayoutColor"
+        android:fadeScrollbars="false"
+        android:padding="5dp"
+        android:scrollbarThumbVertical="@android:color/holo_orange_dark">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/mLayoutColor"
+            android:padding="5dp">
+
+            <TableRow android:gravity="center">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="B Matrisi"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="28sp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/matrisBContainer"
+                android:background="@color/mLayoutColor"
+                android:gravity="center">
+                <!-- Matris Content -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/matrisBLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/createMatrisB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:onClick="createMatrisB"
+                        android:text="Oluştur"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/matrisBj"
+                        app:layout_constraintStart_toEndOf="@+id/matrisBi"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <NumberPicker
+                        android:id="@+id/matrisBi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:background="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/createMatrisB"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <NumberPicker
+                        android:id="@+id/matrisBj"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_gravity="left"
+                        android:background="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/createMatrisB"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/rowB1"
+                android:background="@color/mLayoutColor"
+                android:gravity="center"
+                android:visibility="invisible">
+
+                <Button
+                    android:id="@+id/matrisBDet"
+                    android:onClick="matrisBDet"
+                    android:text="Determinant Hesapla" />
+
+                <Button
+                    android:id="@+id/matrisBInvo"
+                    android:layout_weight="1"
+                    android:onClick="matrisBInvo"
+                    android:text="İnvolütif Hesap" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/rowB2"
+                android:background="@color/mLayoutColor"
+                android:gravity="center"
+                android:visibility="invisible">
+
+                <Button
+                    android:id="@+id/matrisBTers"
+                    android:layout_weight="1"
+                    android:onClick="matrisBTers"
+                    android:text="Tersini Hesapla" />
+
+                <Button
+                    android:id="@+id/matrisBCarp"
+                    android:layout_weight="1"
+                    android:onClick="matrisBCarp"
+                    android:text="Şununla Çarp" />
+
+                <NumberPicker
+                    android:id="@+id/scanCarpan2"
+                    android:layout_height="60dp"
+                    android:background="@color/white" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#D6682C</color>
+    <color name="colorPrimaryDark">#242424</color>
+    <color name="colorAccent">#D6682C</color>
+    <color name="biscay">#303952</color>
+    <color name="mLayoutColor">#2f3640</color>
+    <color name="pensiveColor">#dcdde1</color>
+    <color name="white">#FFFFFF</color>
+</resources>
